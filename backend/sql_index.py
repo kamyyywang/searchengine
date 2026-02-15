@@ -124,19 +124,20 @@ def create_index(path: str, course_data: list[dict]):
         course_data: list of course json data collected from 
         type: list[dict]
 
-    database structure:
+    Database structure:
     
-    Buildings: Building names and locations
-    Courses: General course information
-    GenEdRequirements: Stores which courses fulfill each GE category
-    Majors: General major information
-    MajorCourses: Stores required courses for each major
-    Minors: General minor information
-    MinorCourses: Stores required courses for each minor
-    Prerequisites: Stores which courses have prerequisites
-    Specializations: Specialization information
-    SpecializationCourses Stores required courses for each specialization
-    Terms: Stores term-specific course information
+        Buildings: Building names and locations
+        Courses: General course information
+        GenEdRequirements: Stores which courses fulfill each GE category
+        Majors: General major information
+        MajorCourses: Stores required courses for each major
+        Minors: General minor information
+        MinorCourses: Stores required courses for each minor
+        Prerequisites: Stores which courses have prerequisites
+        Specializations: Specialization information
+        SpecializationCourses Stores required courses for each specialization
+        Terms: Stores term-specific course information
+    
     """
     conn = sqlite3.connect(path)
     cursor = conn.cursor()
