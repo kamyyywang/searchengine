@@ -161,12 +161,23 @@ def fetch_term_info(year, quarter):
             for course in dept.get("courses", []):
                 for section in course.get("sections", []):
                     for meeting in section.get("meetings", []):
+                        meeting_location = meeting.get("bldg")
+                        if (meeting_location is None):
+                            building = None
+                            room = None
+                        elif (meeting_location[0] == "TBA "):
+                            building = "TBA"
+                            room = ""
+                        else:
+                            meeting_location = meeting_location[0].split()
+                            building = meeting_location[0]
+                            room = meeting_location[1]
                         extracted.append({
                             "department": dept_code, 
                             "courseNumber": course.get("courseNumber"),
                             "sectionCode": section.get("sectionCode"),
-                            "building": meeting.get("building"),
-                            "room": meeting.get("room"),
+                            "buildingCode": building,
+                            "roomNumber": room,
                             "startTime": meeting.get("startTime"),
                             "endTime": meeting.get("endTime"),
                             "days": meeting.get("days"),
