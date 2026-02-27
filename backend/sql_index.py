@@ -315,7 +315,7 @@ def filter_course_major(major_id: str, db_path):
 def filter_course_minor(minor_id: str, db_path):
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-    query = "SELECT course_id FROM Minors WHERE minor_id = ?"
+    query = "SELECT course_id FROM MinorCourses WHERE minor_id = ?"
     results = cursor.execute(query, (minor_id,)).fetchall()
 
     return results
